@@ -17,5 +17,7 @@ const resolvers = { Query, Mutation };
 
 const server = new ApolloServer({ resolvers, typeDefs });
 
-const { url } = await startStandaloneServer(server);
+const { url } = await startStandaloneServer(server, {
+  listen: {port: 8080}
+});
 console.log(`${url}`);

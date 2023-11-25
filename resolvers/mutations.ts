@@ -37,4 +37,36 @@ export const Mutation = {
       throw new GraphQLError(e.message);
     }
   },
+
+  updateComic: async (
+    _: any,
+    args: { id: string; titulo: string; descripcion?: string; formato: string },
+  ) => {
+    try {
+      const { id, titulo, descripcion, formato } = args;
+      const updated = await ComicModel.findByIdAndUpdate(id, {
+        titulo,
+        descripcion,
+        formato,
+      }, { new: true, runValidators: true });
+      if (!updated) {
+        throw new GraphQLError(`No se ha encontrado comic con id ${id}.`);
+      }
+      return updated;
+    } catch (e) {
+      throw new GraphQLError(e.message);
+    }
+  },
+
+  deleteComic: async (_: any, args: { id: string }) => {
+    try {
+      const deleted = await ComicModel.findByIdAndDelete(args.id);
+      if (!deleted) {
+        throw new GraphQLError(`No se ha encontrado comic con id ${args.id}`);
+      }
+      return deleted;
+    } catch (e) {
+      throw new GraphQLError(e.message);
+    }
+  },
 };

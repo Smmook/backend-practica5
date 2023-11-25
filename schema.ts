@@ -22,10 +22,13 @@ export const typeDefs = `#graphql
   type Query {
     test: String
     comics: [Comic]
+    comic(id: ID!): Comic
   }
 
   type Mutation {
     addUsuario(nombre: String!, correoElectronico: String!, coleccionComics: ID!): Usuario
     addComic(titulo: String!, descripcion: String, formato: String!): Comic
+    updateComic(id: ID!, titulo: String!, descripcion: String, formato: String!): Comic
+    deleteComic(id: ID!): Comic!
   }
 `;
