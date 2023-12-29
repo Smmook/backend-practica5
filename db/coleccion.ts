@@ -1,9 +1,9 @@
 import mongoose from "npm:mongoose";
-import { ColeccionComics } from "../types.ts";
+import { ColeccionComicsType } from "../types.ts";
 import setDocumentId from "../lib/setDocumentId.ts";
 import { ComicModel } from "./comic.ts";
 
-const coleccionSchema = new mongoose.Schema<ColeccionComics>({
+const coleccionSchema = new mongoose.Schema<ColeccionComicsType>({
   nombre: { type: String, required: true },
   comics: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comic" }],
 });

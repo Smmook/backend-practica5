@@ -1,19 +1,19 @@
-export type Usuario = {
+export type UsuarioType = {
   id: string;
   nombre: string;
   correoElectronico: string;
-  coleccionComics: ColeccionComics;
+  coleccionComics: ColeccionComicsType;
 };
 
-export type Comic = {
+export type ComicType = {
   id: string;
   titulo: string;
   descripcion: string;
   formato: string;
 };
 
-export type ColeccionComics = {
+export type ColeccionComicsType = {
   id: string;
   nombre: string;
-  comics: Comic[];
+  comics: ComicType[];
 };

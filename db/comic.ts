@@ -1,9 +1,9 @@
 import mongoose from "npm:mongoose";
-import { Comic } from "../types.ts";
+import { ComicType } from "../types.ts";
 import setDocumentId from "../lib/setDocumentId.ts";
 import { ColeccionModel } from "./coleccion.ts";
 
-const comicSchema = new mongoose.Schema<Comic>({
+const comicSchema = new mongoose.Schema<ComicType>({
   titulo: { type: String, required: true },
   descripcion: { type: String, required: false },
   formato: { type: String, required: true },

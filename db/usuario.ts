@@ -1,5 +1,5 @@
 import mongoose from "npm:mongoose";
-import { Usuario } from "../types.ts";
+import { UsuarioType } from "../types.ts";
 import { ColeccionModel } from "./coleccion.ts";
 
 const UserSchema = new mongoose.Schema({
@@ -24,7 +24,11 @@ UserSchema.path("coleccionComics").validate(
   },
 );
 
-export type UserModelType = mongoose.Document & Omit<Usuario, "id">;
+UserSchema.post("findOneAndDelete", async function (doc) {
+  await ColeccionModel.findByIdAndDelete(doc.coleccionComics);
+});
+
+export type UserModelType = mongoose.Document & Omit<UsuarioType, "id">;
 
 export const UsuarioModel = mongoose.model<UserModelType>(
   "Usuario",
